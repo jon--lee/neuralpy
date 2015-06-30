@@ -1,7 +1,7 @@
-from setuptools import setup
+from setuptools import find_packages, setup
 
 setup(
-	name='py-net',
+	name='neuralpy',
 	version='1.0.0',
 	description='neural network model',
 	author='Jonathan N. Lee',
@@ -15,5 +15,5 @@ setup(
 		'Programming Language :: Python :: 2.7',
 		],
 	install_requires=['numpy', 'matplotlib'],
-	packages=['py-net']
+	packages=find_packages()
 	)
