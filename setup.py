@@ -14,6 +14,6 @@ setup(
 		'Topic :: Software Development :: Build Tools',
 		'Programming Language :: Python :: 2.7',
 		],
-	install_requires=['numpy', 'matplotlib'],
+	install_requires=['numpy==1.9.2', 'matplotlib==1.4.3'],
 	packages=find_packages()
 	)
