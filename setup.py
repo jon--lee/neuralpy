@@ -6,7 +6,7 @@ setup(
 	description='simple and easy fully-connected multilayer feedforward neural network model',
 	author='Jonathan N. Lee',
 	author_email='jonathan_lee@berkeley.edu',
-	url='https://github.com/jon--lee/py-net',
+	url='https://github.com/jon--lee/neuralpy',
 	license='MIT',
 	classifiers=[
 		'Development Status :: 3 - Alpha',
