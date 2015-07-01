@@ -1,14 +1,13 @@
 neuralpy
 --------
 
-.. |neuralpy| replace:: :mod:`neuralpy`
 
-:mod:`neuralpy` is a neural network model written in python based on Michael Nielsen's neural networks and deep learning book.
+**neuralpy** is a neural network model written in python based on Michael Nielsen's neural networks and deep learning book.
 This package provides a simple yet powerful fully-connected multilayer neural network. Since, this is a multilayer feedforward neural network, it is a universal approximator (Hornik, Stinchcombe and White, 1989). Neural Networks can be used for a wide range of applications from image processing to time series prediction.
 
 Getting Started (quick start)
 +++++++++++++++++++++++++++++
-Download and install :mod:`neuralpy` by running the following command::
+Download and install **neuralpy** by running the following command::
 
 	$ pip install neuralpy
 
@@ -25,7 +24,7 @@ You can get the output of the network given a column vector::
 	x = np.array([[1], [1]])
 	output = net.feedforward(x)
 
-:mod:`output` will be a column vector.
+``output`` will be a column vector.
 
 
 More to come about training the network...
