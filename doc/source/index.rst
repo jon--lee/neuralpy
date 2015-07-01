@@ -32,3 +32,5 @@ That code creates a neural network with two input nodes, one hidden (or intermed
 |neuralpy| will automatically generate random incoming weights and biases for each processing layer.
 
 More coming soon, sorry...
+
+It's business time. *"You know when I'm down to just my socks it's time for business that's why they call it business socks."*
