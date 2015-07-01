@@ -38,19 +38,31 @@
             
   <div class="section" id="welcome-to-neuralpy-s-documentation">
 <h1>Welcome to neuralpy&#8217;s documentation!<a class="headerlink" href="#welcome-to-neuralpy-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
+<p>This page desribes how to get set up with <code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code> and how to start using it.
+We always need help! Contribute on <a class="reference external" href="https://github.com/jon--lee/neuralpy.git">Github</a>!</p>
 <div class="toctree-wrapper compound">
 <ul class="simple">
 </ul>
 </div>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>Getting started is pretty easy! Install <code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code> from PyPI by running the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install neuralpy
+</pre></div>
 </div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span>Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
-</ul>
+<p>Then in your Python project, all you have to do is import it:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">neuralpy</span>
+</pre></div>
+</div>
+<p>Now, let&#8217;s create a network and start training it. First we&#8217;ll need to create a list of integers that determines how many nodes we&#8217;re going to have in each layer. We can have as many layers as we want, but let&#8217;s stick with three for now:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">neuralpy</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>That code creates a neural network with two input nodes, one hidden (or intermediate) layer with three neurons, and an output layer with one neuron. Technically, we call this a two layer network even though there are three actual layers because there are only two layers of processing units (the input layer does not process anything).</p>
+<p><code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code> will automatically generate random incoming weights and biases for each processing layer.</p>
+<p>More coming soon, sorry...</p>
+</div>
 </div>
 
 
@@ -61,8 +73,10 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Welcome to neuralpy&#8217;s documentation!</a></li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#">Welcome to neuralpy&#8217;s documentation!</a><ul>
+<li><a class="reference internal" href="#getting-started">Getting Started</a></li>
+</ul>
+</li>
 </ul>
 <div class="relations">
 <h3>Related Topics</h3>
