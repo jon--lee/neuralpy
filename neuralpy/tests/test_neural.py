@@ -1,6 +1,7 @@
 import unittest
 import neuralpy
 
+
 class associatingElementsTest(unittest.TestCase):
 
 	def test_cost_function(self):
