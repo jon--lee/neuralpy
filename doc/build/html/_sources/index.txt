@@ -33,4 +33,12 @@ That code creates a neural network with two input nodes, one hidden (or intermed
 
 More coming soon, sorry...
 
+
+
+
+
+
+
+
+
 It's business time. *"You know when I'm down to just my socks it's time for business that's why they call it business socks."*
