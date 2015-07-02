@@ -33,6 +33,16 @@ That code creates a neural network with two input nodes, one hidden (or intermed
 
 More coming soon, sorry...
 
+- *"Good news! Your biscuits have arrived! They've been approved from the Wellington office."*
+- *"I got a rejected form."*
+- *"Aw, Jemaine. Rejected. Let's have a look. 'Did not fill out the form correctly: Purpose for the biscuits.' And you've put NA? What is NA?"*
+- *"Not applicable."*
+- *"What? There's no purpose for your biscuits?"*
+- *"No, I just wanted them."*
+- *"Well, they're hardly gonna send ya biscuits if there's no purpose! Think about it. Fill out your forms properly."*
+- *"Well, I probably would have eaten them, I suppose."*
+- *"Bret, what did you put on your form?"*
+- *"I think I put I was gonna eat them."*
 
 
 
@@ -41,4 +51,3 @@ More coming soon, sorry...
 
 
 
-It's business time. *"You know when I'm down to just my socks it's time for business that's why they call it business socks."*

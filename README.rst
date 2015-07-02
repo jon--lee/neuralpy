@@ -1,6 +1,7 @@
 neuralpy
 --------
 
+Note: this is in a very early stage of development. The neural network calculates and trains fine, but there are many more features (and documentation) coming to make it more intuitive and more developer-friendly. Stay tuned and feel free to play around with it now.
 
 **neuralpy** is a neural network model written in python based on Michael Nielsen's neural networks and deep learning book.
 This package provides a simple yet powerful fully-connected multilayer neural network. Since, this is a multilayer feedforward neural network, it is a universal approximator (Hornik, Stinchcombe and White, 1989). Neural Networks can be used for a wide range of applications from image processing to time series prediction.
@@ -30,4 +31,8 @@ You can get the output of the network given a column vector::
 ``output`` will be a column vector.
 
 More to come about training the network...
+Sorry that it's taking a while...
 
+
+- *"You abandoned me. You left me to die."*
+- *"Well, I wouldn't have done it if I'd know you were going to hassle me about it."*
