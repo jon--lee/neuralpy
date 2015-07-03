@@ -24,8 +24,7 @@ Then in your Python project, all you have to do is import it::
 
 Now, let's create a network and start training it. First we'll need to create a list of integers that determines how many nodes we're going to have in each layer. We can have as many layers as we want, but let's stick with three for now::
 
-	layers = [2, 3, 1]
-	net = neuralpy.Network(layers)
+	net = neuralpy.Network(2, 3, 1)
 
 That code creates a neural network with two input nodes, one hidden (or intermediate) layer with three neurons, and an output layer with one neuron. Technically, we call this a two layer network even though there are three actual layers because there are only two layers of processing units (the input layer does not process anything).
 
@@ -33,6 +32,16 @@ That code creates a neural network with two input nodes, one hidden (or intermed
 
 More coming soon, sorry...
 
+- *"Good news! Your biscuits have arrived! They've been approved from the Wellington office."*
+- *"I got a rejected form."*
+- *"Aw, Jemaine. Rejected. Let's have a look. 'Did not fill out the form correctly: Purpose for the biscuits.' And you've put NA? What is NA?"*
+- *"Not applicable."*
+- *"What? There's no purpose for your biscuits?"*
+- *"No, I just wanted them."*
+- *"Well, they're hardly gonna send ya biscuits if there's no purpose! Think about it. Fill out your forms properly."*
+- *"Well, I probably would have eaten them, I suppose."*
+- *"Bret, what did you put on your form?"*
+- *"I think I put I was gonna eat them."*
 
 
 
@@ -41,4 +50,3 @@ More coming soon, sorry...
 
 
 
-It's business time. *"You know when I'm down to just my socks it's time for business that's why they call it business socks."*

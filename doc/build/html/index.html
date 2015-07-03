@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Welcome to neuralpy’s documentation! &mdash; neuralpy 1.0.1 documentation</title>
+    <title>Welcome to neuralpy’s documentation! &mdash; neuralpy 1.1.1 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0.1',
+        VERSION:     '1.1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="neuralpy 1.0.1 documentation" href="#" />
+    <link rel="top" title="neuralpy 1.1.1 documentation" href="#" />
    
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
@@ -55,14 +55,24 @@ We always need help! Contribute on <a class="reference external" href="https://g
 </pre></div>
 </div>
 <p>Now, let&#8217;s create a network and start training it. First we&#8217;ll need to create a list of integers that determines how many nodes we&#8217;re going to have in each layer. We can have as many layers as we want, but let&#8217;s stick with three for now:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">net</span> <span class="o">=</span> <span class="n">neuralpy</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">net</span> <span class="o">=</span> <span class="n">neuralpy</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>That code creates a neural network with two input nodes, one hidden (or intermediate) layer with three neurons, and an output layer with one neuron. Technically, we call this a two layer network even though there are three actual layers because there are only two layers of processing units (the input layer does not process anything).</p>
 <p><code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code> will automatically generate random incoming weights and biases for each processing layer.</p>
 <p>More coming soon, sorry...</p>
-<p>It&#8217;s business time. <em>&#8220;You know when I&#8217;m down to just my socks it&#8217;s time for business that&#8217;s why they call it business socks.&#8221;</em></p>
+<ul class="simple">
+<li><em>&#8220;Good news! Your biscuits have arrived! They&#8217;ve been approved from the Wellington office.&#8221;</em></li>
+<li><em>&#8220;I got a rejected form.&#8221;</em></li>
+<li><em>&#8220;Aw, Jemaine. Rejected. Let&#8217;s have a look. &#8216;Did not fill out the form correctly: Purpose for the biscuits.&#8217; And you&#8217;ve put NA? What is NA?&#8221;</em></li>
+<li><em>&#8220;Not applicable.&#8221;</em></li>
+<li><em>&#8220;What? There&#8217;s no purpose for your biscuits?&#8221;</em></li>
+<li><em>&#8220;No, I just wanted them.&#8221;</em></li>
+<li><em>&#8220;Well, they&#8217;re hardly gonna send ya biscuits if there&#8217;s no purpose! Think about it. Fill out your forms properly.&#8221;</em></li>
+<li><em>&#8220;Well, I probably would have eaten them, I suppose.&#8221;</em></li>
+<li><em>&#8220;Bret, what did you put on your form?&#8221;</em></li>
+<li><em>&#8220;I think I put I was gonna eat them.&#8221;</em></li>
+</ul>
 </div>
 </div>
 
