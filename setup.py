@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 setup(
 	name='neuralpy',
 	version='1.1.2',
-	description='simple and easy fully-connected multilayer feedforward neural network model',
+	description='intuitive and easy neural network model',
 	author='Jonathan N. Lee',
 	author_email='jonathan_lee@berkeley.edu',
 	url='https://github.com/jon--lee/neuralpy',
