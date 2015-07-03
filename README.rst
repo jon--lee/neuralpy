@@ -1,10 +1,9 @@
 neuralpy 1.1.0
 --------
 
-Note: this is in a very early stage of development. The neural network calculates and trains fine, but there are many more features (and documentation) coming to make it more intuitive and more developer-friendly. Stay tuned and feel free to play around with it now.
-
 **neuralpy** is a neural network model written in python based on Michael Nielsen's neural networks and deep learning book.
-This package provides a simple yet powerful fully-connected multilayer neural network. Since, this is a multilayer feedforward neural network, it is a universal approximator (Hornik, Stinchcombe and White, 1989). Neural Networks can be used for a wide range of applications from image processing to time series prediction.
+
+Within this package is the most intuitive fully-connected multilayer neural network model. Data science shouldn't have a high barrier to entry. **neuralpy** handles the math and overhead while you focus on the data.
 
 Visit the (unfinished) `documentation page
 <http://pythonhosted.org/neuralpy/>`_ for detailed explanations or get started with the quick start guide below.
@@ -52,6 +51,8 @@ Now feed forward the input from earlier and the output should be closer to 1.0, 
 
 There is more information about advanced options such as monitoring the cost in the `official documentation
 <http://pythonhosted.org/neuralpy/>`_.
+
+Since, this is a multilayer feedforward neural network, it is a universal approximator (Hornik, Stinchcombe and White, 1989). Neural Networks can be used for a wide range of applications from image processing to time series prediction.
 
 - *"You abandoned me. You left me to die."*
 - *"Well, I wouldn't have done it if I'd know you were going to hassle me about it."*
