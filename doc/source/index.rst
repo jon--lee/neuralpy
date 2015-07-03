@@ -24,8 +24,7 @@ Then in your Python project, all you have to do is import it::
 
 Now, let's create a network and start training it. First we'll need to create a list of integers that determines how many nodes we're going to have in each layer. We can have as many layers as we want, but let's stick with three for now::
 
-	layers = [2, 3, 1]
-	net = neuralpy.Network(layers)
+	net = neuralpy.Network(2, 3, 1)
 
 That code creates a neural network with two input nodes, one hidden (or intermediate) layer with three neurons, and an output layer with one neuron. Technically, we call this a two layer network even though there are three actual layers because there are only two layers of processing units (the input layer does not process anything).
 

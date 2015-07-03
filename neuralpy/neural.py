@@ -1,9 +1,12 @@
 import numpy as np
 import random
 import matplotlib.pyplot as plt
+import logging
 
 def output(x = ""):
 	print bcolors.WARNING + str(x) + bcolors.ENDC
+
+
 
 class bcolors:
 	HEADER = '\033[95m'
@@ -32,13 +35,32 @@ def sigmoid_prime(x):
 	sig = sigmoid(x)
 	return sig * ( 1- sig )
 
+
 sigmoid_vec = np.vectorize(sigmoid)
 sigmoid_prime_vec = np.vectorize(sigmoid_prime)
+
+# converting a list object to a column vector (or n x 1 matrix)
+def list2vec(li):
+	li = np.array(li)
+	return np.reshape(li, (len(li), 1))
+
+
+class errors:
+	init_args_general_error = '__init__() requires two or more non-zero integers separated by commas or a list of two or more non-zero integers.'
+
+
 
 
 class Network():
 	
-	def __init__(self, layers):
+	def __init__(self, *args):
+
+		# handle ambiguous arguments, raise an error if not passed
+		try:
+			layers = self.handle_init_args(args)
+		except TypeError:
+			raise TypeError(errors.init_args_general_error)
+
 		self.num_layers = len(layers)
 
 		self.cost_plots = []															# list of lists that correspond to the y-axis of the cost function plot
@@ -47,10 +69,35 @@ class Network():
 		self.biases = [np.random.randn(y, 1) for y in layers[1:]]
 		self.weights = [np.random.randn(y, x) for x, y in zip(layers[:-1], layers[1:])]
 
+	# method: handle_init_args
+	# handles arguments passed to initializer as they can be ambiguous
+	# could be a list or a tuple. Must handle code accordingly
+	def handle_init_args(self, args):
+		if len(args) == 1: layers = [abs(layer) for layer in args[0]]
+		else: layers = [abs(layer) for layer in list(args)]
+
+		if self.are_valid_layers(layers):
+			return layers
+		else:
+			raise TypeError()
+
+
+	# method: are_valid_layers
+	# determines if the given list of layer lengths
+	# are actually valid (that is, they are greater than 0 and the length
+	# of the list is greater than 1).
+	def are_valid_layers(self, layers):
+		if len(layers) < 2: return False
+		for layer in layers:
+			if layer <= 0: return False
+		return True
+		
+
 	def feedforward(self, a):
+		a = list2vec(a)
 		for b, w in zip(self.biases, self.weights):
 			a = sigmoid_vec(np.dot(w, a)+b)
-		return a
+		return np.reshape(a, (len(a))).tolist()
 
 	def show_costs(self):
 		for plot in self.cost_plots:
@@ -58,8 +105,12 @@ class Network():
 			plt.plot(x, plot)
 		plt.show()
 
-	def gradient_descent(self, training_data, epochs, eta, batch_length = 0, monitor_cost = False):
+	
+
+	def train(self, training_data, epochs, eta, batch_length = 0, monitor_cost = False):
+		training_data = [ (list2vec(pair[0]), list2vec(pair[1])) for pair in training_data ]
 		n = len(training_data)
+
 		eta = float(eta)
 		if(batch_length <= 0):
 			batch_length = n
@@ -84,6 +135,10 @@ class Network():
 				
 				cost = np.linalg.norm(cost_components)
 				self.cost_plots[num_cost_plots - 1].append(cost)
+
+
+	gradient_descent = train 				# this is just for legacy issues
+
 
 	def update_batch(self, batch, eta):
 		delta_biases = [np.zeros(b.shape) for b in self.biases]

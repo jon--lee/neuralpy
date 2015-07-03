@@ -1,4 +1,4 @@
-neuralpy
+neuralpy 1.1.0
 --------
 
 Note: this is in a very early stage of development. The neural network calculates and trains fine, but there are many more features (and documentation) coming to make it more intuitive and more developer-friendly. Stay tuned and feel free to play around with it now.
@@ -7,32 +7,53 @@ Note: this is in a very early stage of development. The neural network calculate
 This package provides a simple yet powerful fully-connected multilayer neural network. Since, this is a multilayer feedforward neural network, it is a universal approximator (Hornik, Stinchcombe and White, 1989). Neural Networks can be used for a wide range of applications from image processing to time series prediction.
 
 Visit the (unfinished) `documentation page
-<http://pythonhosted.org/neuralpy/>`_ or get started with the quick start guide below.
+<http://pythonhosted.org/neuralpy/>`_ for detailed explanations or get started with the quick start guide below.
 
 Getting Started (quick start)
 +++++++++++++++++++++++++++++
-Download and install **neuralpy** by running the following command::
+The following demonstrates how to download and install **neuralpy** and how to create and train a simple neural network.
+Run the following command to download and install::
 
 	$ pip install neuralpy
 
-Then in your python project you an import it and create network by passing it a list of integers that represent the number of nodes in each layer. You can have as many hidden (intermediate) layers as you want but this example will use just one::
+Create a neural network in your project by specifying the number of nodes in each layer. Random weights and biases will automatically be generated::
 	
 	import neuralpy
-	layers = [2, 3, 1]
-	net = neuralpy.Network(layers)
+	net = neuralpy.Network(2, 3, 1)
 
-The first integer in the list represents the length of the input layer and the last integer represents the length of the output layer. Integers between the two represent lengths of hidden layers going from left to right.
+The network feeds input vectors as python lists forward and returns the output vector as a list::
 
-You can get the output of the network given a column vector::
-
-	x = np.array([[1], [1]])
+	x = [1, 1]
 	output = net.feedforward(x)
+	print output
+	# ex: [0.11471727263613461]
 
-``output`` will be a column vector.
+Train the neural network by first generating training data in the form of a list of tuples. Each tuple has two components and each component is a list representing the input and output respectively. This training set represents the simple OR function::
 
-More to come about training the network...
-Sorry that it's taking a while...
+	datum_1 = ([1, 1], [1])
+	datum_2 = ([1, 0], [1])
+	datum_3 = ([0, 1], [1])
+	datum_4 = ([0, 0], [0])
 
+	training_data = [datum_1, datum_2, datum_3, datum_4]
+
+Then we must specify the remaining hyperparameters. Let's say we want to limit it to 100 epochs and give it a learning rate of 1::
+
+	epochs = 100
+	learning_rate = 1
+
+Then run the *train* method with the parameters. We're telling the network to conform to training data::
+
+	net.train(training_data, epochs, learning_rate)
+
+Now feed forward the input from earlier and the output should be closer to 1.0, which is what we trained the network to do::
+
+	output = net.feedforward(x)
+	print output
+	# ex: [0.9542129706170075]
+
+There is more information about advanced options such as monitoring the cost in the `official documentation
+<http://pythonhosted.org/neuralpy/>`_.
 
 - *"You abandoned me. You left me to die."*
 - *"Well, I wouldn't have done it if I'd know you were going to hassle me about it."*
