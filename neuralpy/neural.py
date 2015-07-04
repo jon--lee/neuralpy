@@ -66,8 +66,9 @@ class Network():
 		self.cost_plots = []															# list of lists that correspond to the y-axis of the cost function plot
 
 		self.layers = layers
-		self.biases = [np.random.randn(y, 1) for y in layers[1:]]
-		self.weights = [np.random.randn(y, x) for x, y in zip(layers[:-1], layers[1:])]
+		self.randomize_parameters()
+		# self.biases = [np.random.randn(y, 1) for y in layers[1:]]
+		# self.weights = [np.random.randn(y, x) for x, y in zip(layers[:-1], layers[1:])]
 
 	# method: handle_init_args
 	# handles arguments passed to initializer as they can be ambiguous
@@ -105,7 +106,12 @@ class Network():
 			plt.plot(x, plot)
 		plt.show()
 
-	
+	def clear_costs(self):
+		self.cost_plots = []
+
+	def randomize_parameters(self):
+		self.biases = [np.random.randn(y, 1) for y in self.layers[1:]]
+		self.weights = [np.random.randn(y, x) for x, y in zip(self.layers[:-1], self.layers[1:])]
 
 	def train(self, training_data, epochs, eta, batch_length = 0, monitor_cost = False):
 		training_data = [ (list2vec(pair[0]), list2vec(pair[1])) for pair in training_data ]
