@@ -24,20 +24,14 @@ def cost_function(output, y):
 def cost_derivative(output, y):
 	return output - y
 
-cost_function_vec = np.vectorize(cost_function)
-cost_derivative_vec = np.vectorize(cost_derivative)
 
 def sigmoid(x):
-	x = float(x)
 	return 1.0/(1.0+np.exp(-x))
 
 def sigmoid_prime(x):
 	sig = sigmoid(x)
 	return sig * ( 1- sig )
 
-
-sigmoid_vec = np.vectorize(sigmoid)
-sigmoid_prime_vec = np.vectorize(sigmoid_prime)
 
 # converting a list object to a column vector (or n x 1 matrix)
 def list2vec(li):
@@ -97,7 +91,7 @@ class Network():
 	def feedforward(self, a):
 		a = list2vec(a)
 		for b, w in zip(self.biases, self.weights):
-			a = sigmoid_vec(np.dot(w, a)+b)
+			a = sigmoid(np.dot(w, a)+b)
 		return np.reshape(a, (len(a))).tolist()
 
 	def show_costs(self):
@@ -137,7 +131,7 @@ class Network():
 				cost_components = []
 				for x, y in batch:
 					output = self.feedforward(x)
-					cost_components.append(cost_function_vec(output, y))
+					cost_components.append(cost_function(output, y))
 				
 				cost = np.linalg.norm(cost_components)
 				self.cost_plots[num_cost_plots - 1].append(cost)
@@ -174,19 +168,19 @@ class Network():
 		for b, w in zip(self.biases, self.weights):
 			u = np.dot(w, activation)+b
 			sums.append(u)
-			activation = sigmoid_vec(u)
+			activation = sigmoid(u)
 			activations.append(activation)
 
 		# backward pass
 		# sigmoid prime vector can be optimized as it is just an equation dependent on the components
 		# of the activation layer (the sigmoid part has already been computed, no need to compute it again)
-		epsilon = cost_derivative(activations[-1], y) * sigmoid_prime_vec(sums[-1])
+		epsilon = cost_derivative(activations[-1], y) * sigmoid_prime(sums[-1])
 		partial_biases[-1] = epsilon
 		partial_weights[-1] = np.dot(epsilon, activations[-2].transpose())
 
 		for l in xrange(2, self.num_layers):
 			u = sums[-l]
-			spv = sigmoid_prime_vec(u)
+			spv = sigmoid_prime(u)
 			epsilon = np.dot(self.weights[-l+1].transpose(), epsilon) * spv
 			partial_biases[-l] = epsilon
 			partial_weights[-l] = np.dot(epsilon, activations[-l-1].transpose())
