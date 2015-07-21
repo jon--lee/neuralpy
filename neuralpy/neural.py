@@ -61,8 +61,6 @@ class Network():
 
 		self.layers = layers
 		self.randomize_parameters()
-		# self.biases = [np.random.randn(y, 1) for y in layers[1:]]
-		# self.weights = [np.random.randn(y, x) for x, y in zip(layers[:-1], layers[1:])]
 
 	# method: handle_init_args
 	# handles arguments passed to initializer as they can be ambiguous

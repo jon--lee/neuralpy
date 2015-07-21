@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
 	name='neuralpy',
-	version='1.1.2',
+	version='1.1.3',
 	description='The most intuitive Neural Network Model',
 	author='Jonathan N. Lee',
 	author_email='jonathan_lee@berkeley.edu',

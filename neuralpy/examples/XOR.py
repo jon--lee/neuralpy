@@ -17,7 +17,7 @@ training_data = [datum_1, datum_2, datum_3, datum_4]
 
 epochs = 300
 
-learning_rate = 1
+learning_rate = 3
 
 net.train(training_data, epochs, learning_rate, monitor_cost=True)
 
