@@ -26,8 +26,9 @@ class MeanSquare(Cost):
     def deriv(self, x, y):
         return x - y
 
+# EXPORT
 mean_square = MeanSquare()
 
-types = {
-    "mean_square": MeanSquare()
+mapping = {
+    "mean_square": mean_square
 }

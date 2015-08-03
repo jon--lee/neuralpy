@@ -1,4 +1,4 @@
-import nucleos
+import neuralpy2
 
 training_set = [
     ([[1],[1]], [[1]]),
@@ -7,18 +7,20 @@ training_set = [
     ([[0],[0]], [[0]])
 ]
 
-net = nucleos.Network([2, 3, 1])
+net = neuralpy2.Network([2, 3, 1])
 
 for x, y in training_set:
-	nucleos.output(net.forward(x))
+	neuralpy2.output(net.forward(x))
 
 
 epochs = 300
 learning_rate = 1.0
 
-net.train(training_set[:], epochs, learning_rate)
+net.train(training_set[:], epochs, learning_rate, mini_batch_size=2, monitor=True)
 
 print "\n"
 
 for x, y in training_set:
-	nucleos.output(net.forward(x))
+	neuralpy2.output(net.forward(x))
+
+net.show_cost()

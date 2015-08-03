@@ -14,6 +14,9 @@
 # all layers implement the LayerIterator class for forward
 # propagation iteration
 # 
+# if you add a new class the implements the layer interface, be sure to add
+# add it and a unique string identifier to the list of types
+#
 
 
 # system libraries
@@ -109,3 +112,6 @@ class Layer(object):
 type_gen = "gen"
 type_input = "input"
 type_mlp = "mlp"
+
+
+

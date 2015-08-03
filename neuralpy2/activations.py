@@ -45,7 +45,7 @@ class Sig():
 linear = Lin()
 sigmoid = Sig()
 
-types = {
-    "linear": Lin(),
-    "sigmoid": Sig()
+mapping = {
+    "sigmoid": sigmoid,
+    "linear": linear
 }

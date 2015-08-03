@@ -10,7 +10,7 @@
 # system libraries
 import random
 # internal libraries
-from layers import MLP, Input
+import layers
 import activations
 import colors
 import costs
@@ -38,10 +38,12 @@ class NetworkBase(object):
     def forward(self, x):
         raise NotImplementedError
 
-    # append layer to the end layer of the network
+    # create and append layer to the end layer of the network
     # simply by using the end instance variable
-    # @param layer      layer to be appended
-    def append(self, layer):
+    # @param type_      layer identifier type
+    # @param size       number of nodes in the layer
+    # @param activ      activation identifier type
+    def append(self, *args):
         raise NotImplementedError
 
     # pop the last layer off the network
@@ -60,6 +62,8 @@ class NetworkBase(object):
     #                           input vec, second is column output vec
     # @param epochs             number of iterations to update weights
     # @param alpha              learning rate
+    # @param mini_batch_size    by default, reverts to 1
+    # @param monitor            by default, no loss surveillence
     def train(self, *args):
         raise NotImplementedError
 
@@ -97,19 +101,18 @@ class NetworkBase(object):
         raise NotImplementedError
 
 
-
-
 # Network class provides the implementation of NetworkBase's 
-# non implemented functions.
+# non implemented functions. See interface class for details about
+# each funciton (no comments in this class provided)
 class Network(NetworkBase):
 
 
     def __init__(self, sizes):
         it = iter(sizes)
-        self.start = Input(next(it))              
+        self.start = layers.Input(next(it))              
         layer = self.start
         for size in it:
-            layer.append( MLP(size, activations.sigmoid) )
+            layer.append( layers.MLP(size, activations.sigmoid) )
             layer = layer.next_
         self.end = layer
 
@@ -122,7 +125,10 @@ class Network(NetworkBase):
         return x
 
 
-    def append(self, layer):
+    def append(self, type_, size, activ):
+        type_ = layers.mapping[type_]
+        activ = activations.mapping[activ]
+        layer = type_(size, activ)
         self.end.append(layer)
         self.end = self.end.next_
 
@@ -132,9 +138,7 @@ class Network(NetworkBase):
         self.end.append(None)
 
 
-    def train(self, training_set, epochs, alpha, mini_batch_size=0, monitor=False):
-        if mini_batch_size == 0:
-            mini_batch_size = 1
+    def train(self, training_set, epochs, alpha, mini_batch_size=1, monitor=False):
         self.costcurve = []
         alpha = float(alpha)
         n = len(training_set)
@@ -145,10 +149,10 @@ class Network(NetworkBase):
                 training_set[k:k + mini_batch_size] 
                 for k in xrange(0, n, mini_batch_size)
             ]
-            output(len(mini_batches))
             for mini_batch in mini_batches:
                 self._update_batch(mini_batch, alpha)
-
+            if monitor:
+                self.costcurve.append(self._compute_cost(training_set))
 
     def show_cost(self):
         x = xrange(0, len(self.costcurve), 1)
@@ -165,7 +169,7 @@ class Network(NetworkBase):
             while root is not None:
                 mu = root._backward(mu)
                 root = root.prev
-        self._apply_updates(alpha)
+        self._apply_updates(alpha/len(training_set))        # for testing only, confirm for production
 
 
     def _apply_updates(self, alpha):
