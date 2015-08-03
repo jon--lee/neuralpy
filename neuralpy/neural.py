@@ -118,16 +118,16 @@ class Network():
 
 		# iterate over the number of epochs and update every weight/bias for all training sets in the batch
 		for j in xrange(epochs):
-			random.shuffle(training_data)
+			#random.shuffle(training_data)
 			batch = training_data[:batch_length]
-			self.update_batch(training_data, eta)
+			self.update_batch(batch, eta)
 
 			# if there is a request to monitor the cost, we want to monitor the cost after 
 			# the update form each epoch. Rather than recalculating the feed forward, it would be better
 			# to have that data in a dictionary
 			if(monitor_cost):
 				cost_components = []
-				for x, y in batch:
+				for x, y in training_data:
 					output = self.feedforward(x)
 					cost_components.append(cost_function(output, y))
 				

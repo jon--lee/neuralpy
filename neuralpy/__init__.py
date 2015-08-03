@@ -2,5 +2,5 @@
 from neural import *
 __author__ = 	"Jonathan N Lee"
 __license__ = 	"MIT"
-__version__ =	"1.1.3"
+__version__ =	"1.2.0"
 __email__ = 	"jonathan_lee@berkeley.edu"
