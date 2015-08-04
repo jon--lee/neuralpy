@@ -152,6 +152,7 @@ class Network(NetworkBase):
             for mini_batch in mini_batches:
                 self._update_batch(mini_batch, alpha)
             if monitor:
+                output("Epoch " + str(j) + " compeleted")
                 self.costcurve.append(self._compute_cost(training_set))
 
     def show_cost(self):
@@ -169,7 +170,7 @@ class Network(NetworkBase):
             while root is not None:
                 mu = root._backward(mu)
                 root = root.prev
-        self._apply_updates(alpha/len(training_set))        # for testing only, confirm for production
+        self._apply_updates(alpha/len(training_set))
 
 
     def _apply_updates(self, alpha):
