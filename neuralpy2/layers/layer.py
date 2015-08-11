@@ -107,6 +107,14 @@ class Layer(object):
     def rand(self, *args):
         return np.random.randn(*args)
 
+    def __len__(self):
+        it = iter(self)
+        length = 0
+        for next_ in it:
+            length += 1
+        return length
+
+
 # types of layers to specify layer type property
 # available in layers module
 type_gen = "gen"

@@ -3,7 +3,7 @@ import neuralpy2
 import numpy as np
 
 inputs = np.arange(0, 1, .0005)
-actual_outputs = [ 0.2+0.4*(x**2)+0.3*np.sin(15*x)+0.05*np.cos(50*x) for x in inputs ]
+actual_outputs = [ [0.2+0.4*(x**2)+0.3*np.sin(15*x)+0.05*np.cos(50*x)] for x in inputs ]
 scale = np.amax(actual_outputs)
 
 

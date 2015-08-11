@@ -10,7 +10,7 @@ import neuralpy2
 import numpy as np
 
 inputs = np.arange(0, 10, .1)
-actual_outputs = [ np.sin(x) + 1 for x in inputs ]
+actual_outputs = [ [np.sin(x) + 1] for x in inputs ]
 scale = np.amax(actual_outputs)
 
 
@@ -27,7 +27,7 @@ training_set = zip(inputs_norm, outputs_norm)
 
 
 net = neuralpy2.Network([1, 30, 20])
-net.append("mlp", 1, "linear")
+net.append(1, "mlp", "linear")
 
 epochs = 1000
 learning_rate = .001

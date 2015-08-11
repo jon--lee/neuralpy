@@ -24,8 +24,5 @@ class associatingElementsTest(unittest.TestCase):
                 net.forward(inputs_)
 
 
-
-
-
 if __name__ == '__main__':
 	unittest.main()

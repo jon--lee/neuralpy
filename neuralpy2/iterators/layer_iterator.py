@@ -28,13 +28,6 @@ class LayerIterator(Iterator):
     def __iter__(self):
         return self
 
-    def _len__(self):
-        length = 0
-        it = iter(self)
-        for next_ in it:
-            length += 1
-        return length
-
     # return the next forward propagation of the layer
     # unless the layer is none then stop iteration.
     def next(self):

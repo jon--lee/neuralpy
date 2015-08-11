@@ -21,6 +21,9 @@ import matplotlib.pyplot as plt
 def output(s=""):
     print colors.green + str(s) + colors.end
 
+# list2vec converts a list of any dimension to a numpy array
+# that is also a column vector (mx1 matrix where m equals the
+# number of elements in li. also will put non-lists into a list
 def list2vec(li):
     li = np.array(li)
     return np.reshape(li, (len(li), 1))
@@ -44,9 +47,10 @@ class NetworkBase(object):
     # create and append layer to the end layer of the network
     # simply by using the end instance variable
     # see layers.py and activations.py for mappings
-    # @param type_      layer identifier type
     # @param size       number of nodes in the layer
+    # @param type_      layer identifier type    
     # @param activ      activation identifier type
+    # type_ and activ are optional
     def append(self, *args):
         raise NotImplementedError
 
@@ -129,7 +133,13 @@ class Network(NetworkBase):
         return x
 
 
-    def append(self, type_, size, activ):
+    def append(self, *args):
+        size = args[0]
+        if len(args) > 1:   type_ = args[1]
+        else:               type_ = "mlp"       # default argument
+        if len(args) > 2:   activ = args[2]
+        else:               activ = "sigmoid"   # default argument
+        
         type_ = layers.mapping[type_]
         activ = activations.mapping[activ]
         layer = type_(size, activ)
@@ -197,3 +207,6 @@ class Network(NetworkBase):
             actual = self.forward(x)
             cost += np.linalg.norm(costs.mean_square.func(actual, y))
         return cost / len(training_set)
+
+    def __len__(self):
+        return len(self.start)
