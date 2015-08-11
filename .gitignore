@@ -4,3 +4,4 @@ dist
 neuralpy.egg-info
 *.py.swp
 *.py.swo
+TODO.rst
