@@ -2,3 +2,5 @@ env
 *.pyc
 dist
 neuralpy.egg-info
+*.py.swp
+*.py.swo

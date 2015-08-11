@@ -21,6 +21,9 @@ import matplotlib.pyplot as plt
 def output(s=""):
     print colors.green + str(s) + colors.end
 
+def list2vec(li):
+    li = np.array(li)
+    return np.reshape(li, (len(li), 1))
 
 class NetworkBase(object):
 
@@ -40,6 +43,7 @@ class NetworkBase(object):
 
     # create and append layer to the end layer of the network
     # simply by using the end instance variable
+    # see layers.py and activations.py for mappings
     # @param type_      layer identifier type
     # @param size       number of nodes in the layer
     # @param activ      activation identifier type
@@ -118,7 +122,7 @@ class Network(NetworkBase):
 
 
     def forward(self, x):
-        x = np.array(x)
+        x = list2vec(x)
         it = iter(self.start)
         for layer in it:
             x = layer.forward(x)
@@ -139,6 +143,7 @@ class Network(NetworkBase):
 
 
     def train(self, training_set, epochs, alpha, mini_batch_size=1, monitor=False):
+        training_set = [ ( list2vec(x), list2vec(y) ) for x, y in training_set]
         self.costcurve = []
         alpha = float(alpha)
         n = len(training_set)

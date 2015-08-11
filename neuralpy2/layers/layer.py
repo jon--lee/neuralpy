@@ -21,7 +21,7 @@
 
 # system libraries
 # internal libraries
-from nucleos.iterators import LayerIterator
+from neuralpy2.iterators import LayerIterator
 # third party libraries
 import numpy as np
 
