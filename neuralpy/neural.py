@@ -118,7 +118,7 @@ class Network():
 
 		# iterate over the number of epochs and update every weight/bias for all training sets in the batch
 		for j in xrange(epochs):
-			#random.shuffle(training_data)
+			random.shuffle(training_data)
 			batch = training_data[:batch_length]
 			self.update_batch(batch, eta)
 
