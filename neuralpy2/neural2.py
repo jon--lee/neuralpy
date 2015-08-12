@@ -9,6 +9,7 @@
 
 # system libraries
 import random
+import json
 # internal libraries
 import layers
 import activations
@@ -27,6 +28,28 @@ def output(s=""):
 def list2vec(li):
     li = np.array(li)
     return np.reshape(li, (len(li), 1))
+
+
+# reconstruct json from a given file
+# in the form of the saved Network structure
+# see "save" function
+# returns a constructed network model
+def load(path):
+    with open(path) as in_file:
+        layers = json.load(in_file)
+    net = Network( [ layers[0]['size'] ] )
+    for layer in layers[1:]:
+        size = layer['size']
+        activ = layer['activ']
+        type_ = layer['type']
+        net.append(size, type_, activ)
+        if layer['b'] is not None:  net.end.b = np.array(layer['b'])
+        else:                       net.end.b = None
+        if layer['w'] is not None:  net.end.w = np.array(layer['w'])
+        else:                       net.end.w = None
+    return net
+        
+
 
 class NetworkBase(object):
 
@@ -107,6 +130,19 @@ class NetworkBase(object):
     # compute the cost given a 
     def _compute_cost(self, training_set):
         raise NotImplementedError
+
+    # convert the network to json format, essentially
+    # just by saving information in string/number format
+    def toJSON(self):
+        raise NotImplementedError
+
+    # save the network by structuring the network
+    # as a list of dictionaries. dictionaries would
+    # then easily be converted to json and later
+    # reconstructed into a Network object
+    def save(self, path):
+        raise NotImplementedError
+
 
 
 # Network class provides the implementation of NetworkBase's 
@@ -210,3 +246,28 @@ class Network(NetworkBase):
 
     def __len__(self):
         return len(self.start)
+        
+    
+    def toJSON(self):
+        it = iter(self.start)
+        layers = []
+        for layer in it:
+            layers.append(layer.toJSON())
+        return layers
+
+        
+    def save(self, path):
+        netJSON = self.toJSON()
+        with open(path, 'w') as outfile:
+            json.dump(netJSON, outfile)
+    
+
+    """# --TODO--
+    def save(path):
+        it = iter(self.start)
+        layers = []
+        for layer in it:
+            layers.append(layer)
+        with open(path, 'w') as outfile:
+            json.dump(layers, outfile)
+"""

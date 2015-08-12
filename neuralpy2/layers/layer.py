@@ -17,6 +17,8 @@
 # if you add a new class the implements the layer interface, be sure to add
 # add it and a unique string identifier to the list of types
 #
+# this class interface is not designed to be implemented.
+#
 
 
 # system libraries
@@ -43,10 +45,10 @@ class Layer(object):
         self.next_ = None       # layer that comes after this
         self.prev = None        # layer that comes before this
         
-        self.delta_w = None   # partial weights set to none as no update required
-        self.delta_b = None   # partial biases set to none for same reason
+        self.delta_w = None     # partial weights set to none as no update required
+        self.delta_b = None     # partial biases set to none for same reason
 
-        self.type_ = type_gen
+        self.type_ = type_gen   # default generic layer (not be used)
     
 
     # propagate forward while recording vectors for optimization
@@ -107,6 +109,9 @@ class Layer(object):
     def rand(self, *args):
         return np.random.randn(*args)
 
+    # iterate overself adding one to a counter
+    # during each iteration to find the count
+    # from this layer to the last layer. return count
     def __len__(self):
         it = iter(self)
         length = 0
@@ -114,6 +119,21 @@ class Layer(object):
             length += 1
         return length
 
+    # convert self to a format suitable for json
+    # interpretation. Requires structural characteristics
+    # of layer and parameters
+    def toJSON(self):
+        w, b = self.w, self.b
+        if self.w is not None: w = self.w.tolist()
+        if self.b is not None: b = self.b.tolist()
+        data = {
+            "size": self.size,
+            "type": self.type_,
+            "activ": str(self.activ),
+            "w": w,
+            "b": b
+        }
+        return data
 
 # types of layers to specify layer type property
 # available in layers module

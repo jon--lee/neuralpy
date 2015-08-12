@@ -2,6 +2,6 @@ from mlp import MLP
 from input_ import Input
 
 mapping = {
-    "mlp": MLP,
-    "input": Input
+    layer.type_mlp: MLP,
+    layer.type_input: Input
 }

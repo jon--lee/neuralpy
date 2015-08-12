@@ -15,6 +15,8 @@ class Activ(object):
         raise NotImplementedError
     def fast_deriv(self,y):
         raise NotImplementedError
+    def __repr__(self):
+        raise NotImplementedError
 
 
 # Implements activ for LINEAR function
@@ -25,6 +27,9 @@ class Lin(Activ):
     
     def deriv(self, x):
         return 1.0
+
+    def __repr__(self):
+        return "linear"
 
     
 # Implements activ for SIGMOID (logistic) function
@@ -40,12 +45,14 @@ class Sig():
     def fast_deriv(self, y):
         return y * (1.0 - y)
 
+    def __repr__(self):
+        return "sigmoid"
 
 # EXPORTS of instances
 linear = Lin()
 sigmoid = Sig()
 
 mapping = {
-    "sigmoid": sigmoid,
-    "linear": linear
+    str(sigmoid): sigmoid,
+    str(linear): linear
 }
