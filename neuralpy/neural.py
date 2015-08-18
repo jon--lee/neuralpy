@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import logging
 
 def output(x = ""):
-	print bcolors.WARNING + str(x) + bcolors.ENDC
+	print bcolors.FAIL + str(x) + bcolors.ENDC
 
 
 
