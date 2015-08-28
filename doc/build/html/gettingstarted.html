@@ -1,0 +1,279 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting Started (XOR example) &mdash; neuralpy 1.2.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="neuralpy 1.2.0 documentation" href="index.html"/>
+        <link rel="up" title="neuralpy" href="neuralpy.html"/>
+        <link rel="prev" title="neuralpy" href="neuralpy.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> neuralpy</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="neuralpy2.html"><code class="docutils literal"><span class="pre">neuralpy2</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gettingstarted2.html">Getting Started (XOR Example)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="neuralpy.html"><code class="docutils literal"><span class="pre">neuralpy</span></code></a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Getting Started (XOR example)</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">neuralpy</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="neuralpy.html"><code class="docutils literal"><span class="pre">neuralpy</span></code></a> &raquo;</li>
+      
+    <li>Getting Started (XOR example)</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/gettingstarted.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="getting-started-xor-example">
+<h1>Getting Started (XOR example)<a class="headerlink" href="#getting-started-xor-example" title="Permalink to this headline">¶</a></h1>
+<p>Let&#8217;s start off with a more detailed and involved example than the quick start guide found in the <a class="reference external" href="https://github.com/jon--lee/neuralpy/blob/master/README.rst">README</a>.</p>
+<p>The goal for this example is to create a neural network that will replicate the archetypal <a class="reference external" href="https://en.wikipedia.org/wiki/Exclusive_or">exclusive or</a>, XOR, function. This function is a &#8220;logical operation that outputs <code class="xref py py-mod docutils literal"><span class="pre">True</span></code> only when both inputs differ (one is true, and the other is false).&#8221; You&#8217;re probably familiar with this function from programming. Here&#8217;s some psuedo-code for what it should theoretically accomplish:</p>
+<div class="highlight-python"><div class="highlight"><pre>output = XOR(True, True)                // output --&gt; False
+output = XOR(False, True)               // output --&gt; True
+output = XOR(True, False)               // output --&gt; True
+output = XOR(False, False)              // output --&gt; False
+</pre></div>
+</div>
+<p>For our example, we&#8217;ll use <code class="xref py py-mod docutils literal"><span class="pre">1</span></code> to represent <code class="xref py py-mod docutils literal"><span class="pre">True</span></code> and <code class="xref py py-mod docutils literal"><span class="pre">0</span></code> to represent <code class="xref py py-mod docutils literal"><span class="pre">False</span></code>.</p>
+<p>Getting started is pretty easy. Install <code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code> from PyPI by running the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install neuralpy
+</pre></div>
+</div>
+<p>Then in your Python project, all you have to do is import it:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">neuralpy</span>
+</pre></div>
+</div>
+<p>Now, let&#8217;s create a network and start training it. First we&#8217;ll need to pass a series of non-zero integers that determines how many nodes we&#8217;re going to have in each layer. <code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code> allows us to have as many layers as we want, so let&#8217;s use four for demonstration. As you get comfortable with neural networks, you&#8217;ll start to figure out how many hidden layers you need and how many neurons per hidden layer you need for certain situations. As far as we know now, there&#8217;s no real right or wrong answer, but some combinations work better than others. Remember: for XOR, we have to give the function two inputs and we expect one output:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">net</span> <span class="o">=</span> <span class="n">neuralpy</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The <code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code> class <code class="xref py py-mod docutils literal"><span class="pre">Network</span></code> can take either a list of non-zero integers or just a series of non-zero integers separated by commas. So this code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">neuralpy</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="last">is identical to the code before it. It&#8217;s up to you how you want to initialize the network.</p>
+</div>
+<p>That code creates a neural network with two input nodes, one hidden (or intermediate) layer with three neurons, and an output layer with one neuron. Technically, we call this a three layer network even though there are four actual layers because there are only three layers of processing units (the input layer does not process anything).</p>
+<p><code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code> will automatically generate random incoming weights and biases for each processing layer.</p>
+<p>The function <code class="xref py py-mod docutils literal"><span class="pre">feedforward</span></code> takes a list representing a vector of inputs and reutrns a list representing the output vector that the network calculates. Let&#8217;s see what happens when we give our network some inputs:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">net</span><span class="o">.</span><span class="n">feedforward</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="c"># ex output: [0.46902402362712664]</span>
+</pre></div>
+</div>
+<p>Okay, so you may have gotten something different from me. But, like me, you probably didn&#8217;t get an output that said <code class="xref py py-mod docutils literal"><span class="pre">[1.0]</span></code>, which is what we would expect from XOR when we give it <code class="xref py py-mod docutils literal"><span class="pre">True</span></code> and <code class="xref py py-mod docutils literal"><span class="pre">False</span></code>.</p>
+<p>Try out some of the other inputs that we defined like <code class="xref py py-mod docutils literal"><span class="pre">False</span></code> and <code class="xref py py-mod docutils literal"><span class="pre">False</span></code>.</p>
+<p>Still no luck?</p>
+<p>Well, that&#8217;s why we train neural networks! The purpose of neural networks is to give them a &#8220;training set&#8221; which is a series of inputs and their corresponding outputs. The network uses this information to adjust its weights and biases so that when you give it one of those inputs, it will produce the appropriate output. It &#8220;minimizes the cost function,&#8221; which essentially means that it closes the difference between what it is outputting currently (with incorrect weights and biases) and what it should be outputting (with correct weights and biases). It&#8217;s converging to its &#8220;minimum&#8221; in the cost function because we want our error to be as low as possible.</p>
+<p>We have to show our network what XOR looks like so it can gradually learn how to produce that function. Let&#8217;s create a list of training data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">datum_1</span> <span class="o">=</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">datum_2</span> <span class="o">=</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">datum_3</span> <span class="o">=</span> <span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">datum_4</span> <span class="o">=</span> <span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">training_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">datum_1</span><span class="p">,</span> <span class="n">datum_2</span><span class="p">,</span> <span class="n">datum_3</span><span class="p">,</span> <span class="n">datum_4</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Our training data is just a list of tuples where, in each tuple, there is first a list of inputs that we want to give it and then the output that we expect from that input.</p>
+<p>Now we need to come up with some of the other hyperparameters. First let&#8217;s say that we only want the neural network to train for a certain number of iterations and no more. We call these iterations &#8220;epochs&#8221; and they&#8217;re kind of synonymous with time, but since computation time is different for everyone, we can universally use epochs instead:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">epochs</span> <span class="o">=</span> <span class="mi">300</span>
+</pre></div>
+</div>
+<p>Now we want to set our learning rate which is a factor that basically scales the amount that we adjust each weight and bias during every iteration. Too high of a learning rate may overshoot our minimum. Too low of a learning rate may make our network&#8217;s convergence too slow. You just have to play around with it to get it right, but for now we&#8217;ll say it&#8217;s just <code class="xref py py-mod docutils literal"><span class="pre">1</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">learning_rate</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Now we have all of the basic requirements ready to start training the network. You could now just add:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">net</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training_data</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">,</span> <span class="n">monitor_cost</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It may take a few seconds to train depending on your system and python implementation. Notice that I added <code class="xref py py-mod docutils literal"><span class="pre">monitor_cost</span> <span class="pre">=</span> <span class="pre">True</span></code>. This is an optional parameter but you can use it to track the cost after every epoch.</p>
+<p>You can then call the <code class="xref py py-mod docutils literal"><span class="pre">show_costs()</span></code> function which will open a <code class="xref py py-mod docutils literal"><span class="pre">matplotlib</span> <span class="pre">pyplot</span></code> showing you the progress of your network as it trains on the data you gave it:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">net</span><span class="o">.</span><span class="n">show_costs</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now that we&#8217;ve trained the network and taken a look at the cost function, let&#8217;s see what the network produces for the <code class="xref py py-mod docutils literal"><span class="pre">True</span></code> and <code class="xref py py-mod docutils literal"><span class="pre">False</span></code> input that we gave it earlier:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">net</span><span class="o">.</span><span class="n">feedforward</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="c"># ex: [0.946417057338419]</span>
+</pre></div>
+</div>
+<p>Well, it&#8217;s not exactly <code class="xref py py-mod docutils literal"><span class="pre">1</span></code> but it&#8217;s pretty darn close! That&#8217;s the thing with neural networks. They&#8217;re approximators. You&#8217;ll rarely get an integer as a result, but the point is you can round to the nearest integer or do some other post-processing.</p>
+<p>Let&#8217;s see what all the inputs in our <code class="xref py py-mod docutils literal"><span class="pre">training_data</span></code> produce:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">datum</span> <span class="ow">in</span> <span class="n">training_data</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">datum</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">print</span> <span class="n">net</span><span class="o">.</span><span class="n">feedforward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c"># ex:</span>
+        <span class="c">#       [0.06214085086576566]</span>
+        <span class="c">#       [0.946417057338419]</span>
+        <span class="c">#       [0.9352235744480635]</span>
+        <span class="c">#       [0.05643177490633071]</span>
+</pre></div>
+</div>
+<p>Not bad!</p>
+<p>Neural Networks have a lot of applications. Once you have a model like <code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code> it&#8217;s just about feature selection and pre-processing now. In fact, with this architecture, you can start doing optical character recognition easily!</p>
+<ul class="simple">
+<li><em>&#8220;Good news! Your biscuits have arrived! They&#8217;ve been approved from the Wellington office.&#8221;</em></li>
+<li><em>&#8220;I got a rejected form.&#8221;</em></li>
+<li><em>&#8220;Aw, Jemaine. Rejected. Let&#8217;s have a look. &#8216;Did not fill out the form correctly: Purpose for the biscuits.&#8217; And you&#8217;ve put NA? What is NA?&#8221;</em></li>
+<li><em>&#8220;Not applicable.&#8221;</em></li>
+<li><em>&#8220;What? There&#8217;s no purpose for your biscuits?&#8221;</em></li>
+<li><em>&#8220;No, I just wanted them.&#8221;</em></li>
+<li><em>&#8220;Well, they&#8217;re hardly gonna send ya biscuits if there&#8217;s no purpose! Think about it. Fill out your forms properly.&#8221;</em></li>
+<li><em>&#8220;Well, I probably would have eaten them, I suppose.&#8221;</em></li>
+<li><em>&#8220;Bret, what did you put on your form?&#8221;</em></li>
+<li><em>&#8220;I think I put I was gonna eat them.&#8221;</em></li>
+</ul>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="neuralpy.html" class="btn btn-neutral" title="neuralpy"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Jonathan N. Lee.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -4,6 +4,9 @@
 # NetworkBase module that defines an abstract network. sizes parameter determines
 # the number of nodes in each respective layer. layers by default
 # consist of an inputs and mlps with sigmoid activations.
+#
+# Please do not implement "NotImplemented" code blocks; they are not implemented
+# for a reason...
 # 
 
 
@@ -25,10 +28,25 @@ def output(s=""):
 # list2vec converts a list of any dimension to a numpy array
 # that is also a column vector (mx1 matrix where m equals the
 # number of elements in li. also will put non-lists into a list
+# 
+# try converting obj to np array and reshaping. if type error,
+# then convert obj to list then np array and reshape and return.
 def list2vec(li):
-    li = np.array(li)
-    return np.reshape(li, (len(li), 1))
+    try:
+        li = np.array(li)
+        return np.reshape(li, (len(li), 1))
+    except TypeError:
+        li = np.array([li])
+        return np.reshape(li, (len(li), 1))
 
+# convert an data type (such as a tuple or even
+# an int!) to a list.
+def it2list(iterable):
+    try:
+        it = iter(iterable[0])
+        return list(iterable[0])
+    except TypeError:
+        return list(iterable)
 
 # reconstruct json from a given file
 # in the form of the saved Network structure
@@ -151,7 +169,9 @@ class NetworkBase(object):
 class Network(NetworkBase):
 
 
-    def __init__(self, sizes):
+    def __init__(self, *args):
+        sizes = it2list(args)
+        output(sizes)
         it = iter(sizes)
         self.start = layers.Input(next(it))              
         layer = self.start
@@ -161,7 +181,8 @@ class Network(NetworkBase):
         self.end = layer
 
 
-    def forward(self, x):
+    def forward(self, *args):
+        x = it2list(args)
         x = list2vec(x)
         it = iter(self.start)
         for layer in it:
