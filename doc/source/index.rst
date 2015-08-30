@@ -4,6 +4,7 @@
 .. |false| replace:: :mod:`False`
 .. |0| replace:: :mod:`0`
 .. |1| replace:: :mod:`1`
+.. |matplotlib| replace:: :mod:`matplotlib`
 
 Welcome to neuralpy's documentation!
 ************************************
@@ -29,5 +30,6 @@ Table of Contents
 .. toctree::
     :maxdepth: 2
 
+    installing
     neuralpy2
     neuralpy

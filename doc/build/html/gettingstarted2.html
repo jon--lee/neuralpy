@@ -65,6 +65,7 @@
           
           
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="neuralpy2.html"><code class="docutils literal"><span class="pre">neuralpy2</span></code></a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="">Getting Started (XOR Example)</a></li>
 </ul>
@@ -145,8 +146,8 @@ Technically, we call this a three layer network even though there are four actua
 <p><a href="#id5"><span class="problematic" id="id6">|neuralpy2|</span></a> will automatically generate random incoming weights and biases for each processing layer.</p>
 <p>The function <code class="xref py py-mod docutils literal"><span class="pre">forward</span></code> takes a list representing a vector of inputs and reutrns a list representing the output vector that the network calculates.
 Let&#8217;s see what happens when we give our network some inputs:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">net</span><span class="o">.</span><span class="n">forward</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
-<span class="c"># ex output: array([[0.49292647]])</span>
+<div class="highlight-python"><div class="highlight"><pre>print net.forward([1,0])
+# ex output: array([[0.49292647]])
 </pre></div>
 </div>
 <p>Okay, so you may have gotten something different from me. But, like me, you probably didn&#8217;t get an output that said <code class="xref py py-mod docutils literal"><span class="pre">[1.0]</span></code>, which is what we would expect from XOR when we give it <code class="xref py py-mod docutils literal"><span class="pre">True</span></code> and <code class="xref py py-mod docutils literal"><span class="pre">False</span></code>.</p>
@@ -191,8 +192,8 @@ training_set = [datum_1, datum_2, datum_3, datum_4]
 </pre></div>
 </div>
 <p>Now that we&#8217;ve trained the network and taken a look at the cost function, let&#8217;s see what the network produces for the <code class="xref py py-mod docutils literal"><span class="pre">True</span></code> and <code class="xref py py-mod docutils literal"><span class="pre">False</span></code> input that we gave it earlier:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">net</span><span class="o">.</span><span class="n">forward</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="c"># ex: array([[0.93984856]])</span>
+<div class="highlight-python"><div class="highlight"><pre>print net.forward([1, 0])
+# ex: array([[0.93984856]])
 </pre></div>
 </div>
 <p>Well, it&#8217;s not exactly <code class="xref py py-mod docutils literal"><span class="pre">1</span></code> but it&#8217;s pretty darn close! That&#8217;s the thing with neural networks. They&#8217;re approximators. You&#8217;ll rarely get an integer as a result,

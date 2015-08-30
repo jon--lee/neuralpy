@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuralpy &mdash; neuralpy 1.2.0 documentation</title>
+  <title>Installing &mdash; neuralpy 1.2.0 documentation</title>
   
 
   
@@ -31,8 +31,8 @@
 
   
     <link rel="top" title="neuralpy 1.2.0 documentation" href="index.html"/>
-        <link rel="next" title="Getting Started (XOR example)" href="gettingstarted.html"/>
-        <link rel="prev" title="Getting Started (XOR Example)" href="gettingstarted2.html"/> 
+        <link rel="next" title="neuralpy2" href="neuralpy2.html"/>
+        <link rel="prev" title="Welcome to neuralpy’s documentation!" href="index.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -64,12 +64,12 @@
           
           
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="neuralpy2.html"><code class="docutils literal"><span class="pre">neuralpy2</span></code></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="gettingstarted2.html">Getting Started (XOR Example)</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href=""><code class="docutils literal"><span class="pre">neuralpy</span></code></a><ul>
+<li class="toctree-l1"><a class="reference internal" href="neuralpy.html"><code class="docutils literal"><span class="pre">neuralpy</span></code></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="gettingstarted.html">Getting Started (XOR example)</a></li>
 </ul>
 </li>
@@ -97,10 +97,10 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li><code class="docutils literal"><span class="pre">neuralpy</span></code></li>
+    <li>Installing</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/neuralpy.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/installing.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -108,19 +108,27 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="neuralpy">
-<h1><code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code><a class="headerlink" href="#neuralpy" title="Permalink to this headline">¶</a></h1>
-<p><code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code> is the original neural network package that features a simple yet powerful tool
-for creating neural network models while avoiding all math. All you have to do is focus on the data. Get started
-with simple examples and interface descriptions.</p>
+  <div class="section" id="installing">
+<h1>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h1>
+<p>It&#8217;s recommended that you use <code class="xref py py-mod docutils literal"><span class="pre">pip</span></code> to install <code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code>. There are also alternative methods
+for doing so listed below.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last"><code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code> has been succeeded by <code class="xref py py-mod docutils literal"><span class="pre">neuralpy2</span></code> which has a similar interface but is much more extensible and modular.</p>
+<p>You&#8217;ll need <code class="xref py py-mod docutils literal"><span class="pre">numpy</span></code> and <code class="xref py py-mod docutils literal"><span class="pre">matplotlib</span></code> in order to run <code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code>. Those will be downloaded automatically
+if you install from <code class="xref py py-mod docutils literal"><span class="pre">pip</span></code>, which is why it&#8217;s recommended. At this time, it is a known issue that <code class="xref py py-mod docutils literal"><span class="pre">numpy</span></code> and <code class="xref py py-mod docutils literal"><span class="pre">matplotlib</span></code> do not automatically install
+as dependencies when using alternative methods of installation.</p>
+<p class="last">If you would like to use easy_install you&#8217;ll have to manually install <code class="xref py py-mod docutils literal"><span class="pre">numpy</span></code>. If you are downloading the compressed archive,
+you must install <code class="xref py py-mod docutils literal"><span class="pre">numpy</span></code> and <code class="xref py py-mod docutils literal"><span class="pre">matplotlib</span></code>
+manually.</p>
 </div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started (XOR example)</a></li>
-</ul>
+<p>Install with <code class="xref py py-mod docutils literal"><span class="pre">pip</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install neuralpy
+</pre></div>
+</div>
+<p>or download the <a class="reference external" href="https://pypi.python.org/pypi/neuralpy/">compressed archive</a> from PyPI, expand it and <a class="reference external" href="https://docs.python.org/library/cd.html#module-cd" title="(in Python v2.7)"><code class="xref py py-mod docutils literal"><span class="pre">cd</span></code></a> into the directory that
+contains <strong>setup.py</strong> and execute (be sure to install <code class="xref py py-mod docutils literal"><span class="pre">numpy</span></code> and <code class="xref py py-mod docutils literal"><span class="pre">matplotlib</span></code> manually as well):</p>
+<div class="highlight-python"><div class="highlight"><pre>$ python setup.py install
+</pre></div>
 </div>
 </div>
 
@@ -130,10 +138,10 @@ with simple examples and interface descriptions.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="gettingstarted.html" class="btn btn-neutral float-right" title="Getting Started (XOR example)">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="neuralpy2.html" class="btn btn-neutral float-right" title="neuralpy2">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gettingstarted2.html" class="btn btn-neutral" title="Getting Started (XOR Example)"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="Welcome to neuralpy’s documentation!"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
