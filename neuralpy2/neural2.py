@@ -171,7 +171,6 @@ class Network(NetworkBase):
 
     def __init__(self, *args):
         sizes = it2list(args)
-        output(sizes)
         it = iter(sizes)
         self.start = layers.Input(next(it))              
         layer = self.start

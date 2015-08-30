@@ -18,10 +18,9 @@ setup(
 		'Topic :: Scientific/Engineering :: Artificial Intelligence',
 		'Programming Language :: Python',
 		'Programming Language :: Python :: 2.7',
-
 		],
 	install_requires=['numpy==1.9.2', 'matplotlib==1.4.3'],
 	packages=find_packages()
-	)
+)
 
 
