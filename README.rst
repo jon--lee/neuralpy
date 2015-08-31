@@ -5,6 +5,7 @@ neuralpy 1.2.1
 
 neuralpy is a neural network model written in python based on Michael Nielsen's neural networks and deep learning book.
 
+- Visit the `neuralpy website <http://jon--lee.github.io/neuralpy/>`_
 - Get detailed examples and explanations in the `Official Documentation <http://pythonhosted.org/neuralpy/>`_
 - Contribute on `Github <https://github.com/jon--lee/neuralpy>`_
 
