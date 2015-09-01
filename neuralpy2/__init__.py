@@ -3,6 +3,7 @@ from activations import *
 import colors
 from layers import *
 import iterators
+from data import *
 
 __author__ =    "Jonathan N Lee"
 __license__ =   "MIT"
