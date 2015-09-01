@@ -164,14 +164,13 @@
                         <p class="white" style="font-size: 20px; display: block;">Inputs and outputs are stored as a list of tuples of vectors. You can grab a simple AND dataset by executing the following:</p>
                         <pre style="width: 600px; text-align: left; display: block;" class="white bg-deepocean">&gt;&gt;&gt; dataset = neuralpy.load_and()<br></pre>
                         <p class="white" style="font-size: 20px; display: block;">Details about the input/output types are in the docs. Now let's set the number of epochs and a learning rate and start training:</p>
-                        <pre style="width: 600px; text-align: left; display: block;" class="white bg-deepocean">&gt;&gt;&gt; epochs = 100
-&gt;&gt;&gt; learning_rate = 0.1
+                        <pre style="width: 600px; text-align: left; display: block;" class="white bg-deepocean">&gt;&gt;&gt; epochs = 250
+&gt;&gt;&gt; learning_rate = 2
 &gt;&gt;&gt; net.train(dataset, epochs, learning_rate)<br></pre>
                         <p class="white" style="font-size: 20px; display: block;">Let's verify that it worked:</p>
                         <pre style="width: 600px; text-align: left; display: block;" class="white bg-deepocean">&gt;&gt;&gt; for x, y in dataset:
-    output = float(net.forward(x))
     print "expected: " + str(y)
-    print "got: " + str(output) + "\n"</pre>
+    print "got: " + str(net.forward(x)) + "\n"</pre>
                     </center>
                 </div>
                 <a href="http://pythonhosted.org/neuralpy/" class="btn btn-outline btn-outline-xl outline-light">go to the docs</a>
