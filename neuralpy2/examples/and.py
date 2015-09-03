@@ -7,6 +7,8 @@ training_set = [
     ([[0],[0]], [[0]])
 ]
 
+# alternatively you could write training_set = neuralpy2.load_and()
+
 net = neuralpy2.Network([2, 3, 1])
 
 for x, y in training_set:
