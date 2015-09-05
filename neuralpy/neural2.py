@@ -186,7 +186,7 @@ class Network(NetworkBase):
         it = iter(self.start)
         for layer in it:
             x = layer.forward(x)
-        return x
+        return it2list(x)
 
 
     def append(self, *args):

@@ -23,7 +23,7 @@
 
 # system libraries
 # internal libraries
-from neuralpy2.iterators import LayerIterator
+from neuralpy.iterators import LayerIterator
 # third party libraries
 import numpy as np
 
