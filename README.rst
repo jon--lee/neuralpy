@@ -36,7 +36,7 @@ and it can be generated for you to save typing::
         #   ([1, 1], [1]),
         #   ([1, 0], [1]),
         #   ...
-        #   ]
+        # ]
 
 Then we must specify the remaining hyperparameters. Let's say we want to limit it to 100 epochs and give it a learning rate of 1::
 
