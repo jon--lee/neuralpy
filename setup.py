@@ -1,5 +1,5 @@
 from setuptools import find_packages, setup
-
+print find_packages(exclude=['DEPneuralpy'])
 setup(
 	name='neuralpy',
 	version='1.2.1',
@@ -20,7 +20,5 @@ setup(
 		'Programming Language :: Python :: 2.7',
 		],
 	install_requires=['numpy==1.9.2', 'matplotlib==1.4.3'],
-	packages=find_packages()
+        packages=find_packages(exclude=['DEPneuralpy'])
 )
-
-
