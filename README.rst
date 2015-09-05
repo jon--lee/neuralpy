@@ -26,17 +26,17 @@ The network feeds input vectors as python lists forward and returns the output v
 	x = [1, 1]
 	output = net.feedforward(x)
 	print output
-    # ex: [0.11471727263613461]
+        # ex: [0.11471727263613461]
 
 Train the neural network by first generating training data in the form of a list of tuples. Each tuple has two components and each component is a list representing the input and output respectively. This training set represents the simple OR function
 and it can be generated for you to save typing::
 
 	training_data = neuralpy2.load_or()
-    # [
-    #   ([1, 1], [1]),
-    #   ([1, 0], [1]),
-    #   ...
-    #   ]
+        # [
+        #   ([1, 1], [1]),
+        #   ([1, 0], [1]),
+        #   ...
+        #   ]
 
 Then we must specify the remaining hyperparameters. Let's say we want to limit it to 100 epochs and give it a learning rate of 1::
 
