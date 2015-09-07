@@ -16,7 +16,7 @@ for x, y in training_set:
 
 
 epochs = 300
-learning_rate = 1.0
+learning_rate = 3.0
 
 net.train(training_set[:], epochs, learning_rate, mini_batch_size=2, monitor=True)
 

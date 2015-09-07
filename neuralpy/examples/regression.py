@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import neuralpy2
+import neuralpy
 import numpy as np
 
 inputs = np.arange(0, 1, .0005)
@@ -12,16 +12,16 @@ mean = np.mean(inputs)
 std = np.std(inputs)
 
 inputs_norm = (inputs - mean) / std
-inputs_norm = [ np.reshape(x, (1, 1)) for x in inputs_norm ]
+inputs_norm = [ [x] for x in inputs_norm ]
 
 outputs_norm = actual_outputs / scale
 
 training_set = zip(inputs_norm, outputs_norm)
 
 
-net = neuralpy2.Network([1, 100, 1])
+net = neuralpy.Network([1, 100, 1])
 
-epochs = 400
+epochs = 100
 learning_rate = .1
 mini_batch_size = 10
 
@@ -30,8 +30,9 @@ net.train(training_set, epochs, learning_rate, mini_batch_size=mini_batch_size, 
 net.show_cost()
 
 
+net_outputs = [ net.forward((x - mean / std))[0] for x in inputs ]
 
-net_outputs = [ float(net.forward([[ (x-mean) / std ]])) * scale for x in inputs]
+net_outputs = [ float(net.forward([[ (x-mean) / std ]])[0]) * scale for x in inputs]
 plt.plot(inputs, actual_outputs)
 plt.plot(inputs, net_outputs)
 plt.show()

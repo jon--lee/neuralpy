@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 print find_packages(exclude=['DEPneuralpy'])
 setup(
 	name='neuralpy',
-	version='1.2.1',
+	version='1.3.0',
         description='neuralpy - The most intuitive Neural Network Model',
 	author='Jonathan N. Lee',
         keywords='neuralpy neural networks',

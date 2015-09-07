@@ -1,4 +1,4 @@
-neuralpy 1.2.1
+neuralpy 1.3.0
 --------------
 
 **Within this package is the most intuitive fully-connected multilayer neural network model. Data science shouldn't have a high barrier to entry. neuralpy handles the math and overhead while you focus on the data.**
