@@ -46,7 +46,7 @@ That code creates a neural network with two input nodes, one hidden (or intermed
 
 The function :mod:`feedforward` takes a list representing a vector of inputs and reutrns a list representing the output vector that the network calculates. Let's see what happens when we give our network some inputs::
 
-	print net.feedforward([1,0])
+	print net.forward([1,0])
 	# ex output: [0.46902402362712664]
 
 Okay, so you may have gotten something different from me. But, like me, you probably didn't get an output that said :mod:`[1.0]`, which is what we would expect from XOR when we give it |true| and |false|.
@@ -66,6 +66,10 @@ We have to show our network what XOR looks like so it can gradually learn how to
 
 	training_data = [datum_1, datum_2, datum_3, datum_4]
 
+Alternatively you could just type::
+
+    training_data = neuralpy.load_xor()
+
 Our training data is just a list of tuples where, in each tuple, there is first a list of inputs that we want to give it and then the output that we expect from that input.
 
 Now we need to come up with some of the other hyperparameters. First let's say that we only want the neural network to train for a certain number of iterations and no more. We call these iterations "epochs" and they're kind of synonymous with time, but since computation time is different for everyone, we can universally use epochs instead::
@@ -74,7 +78,7 @@ Now we need to come up with some of the other hyperparameters. First let's say t
 
 Now we want to set our learning rate which is a factor that basically scales the amount that we adjust each weight and bias during every iteration. Too high of a learning rate may overshoot our minimum. Too low of a learning rate may make our network's convergence too slow. You just have to play around with it to get it right, but for now we'll say it's just :mod:`1`::
 
-	learning_rate = 1
+	learning_rate = 3
 
 Now we have all of the basic requirements ready to start training the network. You could now just add::
 
@@ -84,19 +88,18 @@ It may take a few seconds to train depending on your system and python implement
 
 You can then call the :mod:`show_costs()` function which will open a :mod:`matplotlib pyplot` showing you the progress of your network as it trains on the data you gave it::
 
-	net.show_costs()
+	net.show_cost()
 
 Now that we've trained the network and taken a look at the cost function, let's see what the network produces for the |true| and |false| input that we gave it earlier::
 
-	print net.feedforward([1, 0])
+	print net.forward([1, 0])
 	# ex: [0.946417057338419]
 
 Well, it's not exactly |1| but it's pretty darn close! That's the thing with neural networks. They're approximators. You'll rarely get an integer as a result, but the point is you can round to the nearest integer or do some other post-processing.
 
 Let's see what all the inputs in our :mod:`training_data` produce::
 
-	for datum in training_data:
-		x = datum[1]
+	for x, y in training_data:
 		print net.feedforward(x)
 		# ex: 	
 		#	[0.06214085086576566]
@@ -104,7 +107,7 @@ Let's see what all the inputs in our :mod:`training_data` produce::
 		#	[0.9352235744480635]
 		#	[0.05643177490633071]
 
-Not bad!
+Not bad! Again you probably got something similar but not exactly the same.
 
 Neural Networks have a lot of applications. Once you have a model like |neuralpy| it's just about feature selection and pre-processing now. In fact, with this architecture, you can start doing optical character recognition easily!
 

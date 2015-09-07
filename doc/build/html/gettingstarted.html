@@ -5,16 +5,16 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started (XOR example) &mdash; neuralpy 1.2.0 documentation</title>
+  <title>Getting Started (XOR example) &mdash; neuralpy 1.2.1 documentation</title>
   
 
   
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
   
   
@@ -30,12 +30,12 @@
   
 
   
-    <link rel="top" title="neuralpy 1.2.0 documentation" href="index.html"/>
+    <link rel="top" title="neuralpy 1.2.1 documentation" href="index.html"/>
         <link rel="up" title="neuralpy" href="neuralpy.html"/>
         <link rel="prev" title="neuralpy" href="neuralpy.html"/> 
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -47,8 +47,14 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-nav-search">
         
-          <a href="index.html" class="fa fa-home"> neuralpy</a>
+
         
+          <a href="index.html" class="icon icon-home"> neuralpy
+        
+
+        
+        </a>
+
         
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -57,6 +63,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
+
+        
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
@@ -65,10 +73,6 @@
           
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neuralpy2.html"><code class="docutils literal"><span class="pre">neuralpy2</span></code></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="gettingstarted2.html">Getting Started (XOR Example)</a></li>
-</ul>
-</li>
 <li class="toctree-l1 current"><a class="reference internal" href="neuralpy.html"><code class="docutils literal"><span class="pre">neuralpy</span></code></a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="">Getting Started (XOR example)</a></li>
 </ul>
@@ -102,7 +106,9 @@
     <li>Getting Started (XOR example)</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/gettingstarted.txt" rel="nofollow"> View page source</a>
+          
+            <a href="_sources/gettingstarted.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
   </ul>
@@ -145,8 +151,8 @@ output = XOR(False, False)              // output --&gt; False
 <p>That code creates a neural network with two input nodes, one hidden (or intermediate) layer with three neurons, and an output layer with one neuron. Technically, we call this a three layer network even though there are four actual layers because there are only three layers of processing units (the input layer does not process anything).</p>
 <p><code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code> will automatically generate random incoming weights and biases for each processing layer.</p>
 <p>The function <code class="xref py py-mod docutils literal"><span class="pre">feedforward</span></code> takes a list representing a vector of inputs and reutrns a list representing the output vector that the network calculates. Let&#8217;s see what happens when we give our network some inputs:</p>
-<div class="highlight-python"><div class="highlight"><pre>print net.feedforward([1,0])
-# ex output: [0.46902402362712664]
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">net</span><span class="o">.</span><span class="n">forward</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="c"># ex output: [0.46902402362712664]</span>
 </pre></div>
 </div>
 <p>Okay, so you may have gotten something different from me. But, like me, you probably didn&#8217;t get an output that said <code class="xref py py-mod docutils literal"><span class="pre">[1.0]</span></code>, which is what we would expect from XOR when we give it <code class="xref py py-mod docutils literal"><span class="pre">True</span></code> and <code class="xref py py-mod docutils literal"><span class="pre">False</span></code>.</p>
@@ -162,13 +168,17 @@ output = XOR(False, False)              // output --&gt; False
 <span class="n">training_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">datum_1</span><span class="p">,</span> <span class="n">datum_2</span><span class="p">,</span> <span class="n">datum_3</span><span class="p">,</span> <span class="n">datum_4</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>Alternatively you could just type:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">training_data</span> <span class="o">=</span> <span class="n">neuralpy</span><span class="o">.</span><span class="n">load_xor</span><span class="p">()</span>
+</pre></div>
+</div>
 <p>Our training data is just a list of tuples where, in each tuple, there is first a list of inputs that we want to give it and then the output that we expect from that input.</p>
 <p>Now we need to come up with some of the other hyperparameters. First let&#8217;s say that we only want the neural network to train for a certain number of iterations and no more. We call these iterations &#8220;epochs&#8221; and they&#8217;re kind of synonymous with time, but since computation time is different for everyone, we can universally use epochs instead:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">epochs</span> <span class="o">=</span> <span class="mi">300</span>
 </pre></div>
 </div>
 <p>Now we want to set our learning rate which is a factor that basically scales the amount that we adjust each weight and bias during every iteration. Too high of a learning rate may overshoot our minimum. Too low of a learning rate may make our network&#8217;s convergence too slow. You just have to play around with it to get it right, but for now we&#8217;ll say it&#8217;s just <code class="xref py py-mod docutils literal"><span class="pre">1</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">learning_rate</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">learning_rate</span> <span class="o">=</span> <span class="mi">3</span>
 </pre></div>
 </div>
 <p>Now we have all of the basic requirements ready to start training the network. You could now just add:</p>
@@ -177,27 +187,26 @@ output = XOR(False, False)              // output --&gt; False
 </div>
 <p>It may take a few seconds to train depending on your system and python implementation. Notice that I added <code class="xref py py-mod docutils literal"><span class="pre">monitor_cost</span> <span class="pre">=</span> <span class="pre">True</span></code>. This is an optional parameter but you can use it to track the cost after every epoch.</p>
 <p>You can then call the <code class="xref py py-mod docutils literal"><span class="pre">show_costs()</span></code> function which will open a <code class="xref py py-mod docutils literal"><span class="pre">matplotlib</span> <span class="pre">pyplot</span></code> showing you the progress of your network as it trains on the data you gave it:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">net</span><span class="o">.</span><span class="n">show_costs</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">net</span><span class="o">.</span><span class="n">show_cost</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Now that we&#8217;ve trained the network and taken a look at the cost function, let&#8217;s see what the network produces for the <code class="xref py py-mod docutils literal"><span class="pre">True</span></code> and <code class="xref py py-mod docutils literal"><span class="pre">False</span></code> input that we gave it earlier:</p>
-<div class="highlight-python"><div class="highlight"><pre>print net.feedforward([1, 0])
-# ex: [0.946417057338419]
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">net</span><span class="o">.</span><span class="n">forward</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="c"># ex: [0.946417057338419]</span>
 </pre></div>
 </div>
 <p>Well, it&#8217;s not exactly <code class="xref py py-mod docutils literal"><span class="pre">1</span></code> but it&#8217;s pretty darn close! That&#8217;s the thing with neural networks. They&#8217;re approximators. You&#8217;ll rarely get an integer as a result, but the point is you can round to the nearest integer or do some other post-processing.</p>
 <p>Let&#8217;s see what all the inputs in our <code class="xref py py-mod docutils literal"><span class="pre">training_data</span></code> produce:</p>
-<div class="highlight-python"><div class="highlight"><pre>for datum in training_data:
-        x = datum[1]
-        print net.feedforward(x)
-        # ex:
-        #       [0.06214085086576566]
-        #       [0.946417057338419]
-        #       [0.9352235744480635]
-        #       [0.05643177490633071]
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">training_data</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">net</span><span class="o">.</span><span class="n">feedforward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c"># ex:</span>
+        <span class="c">#       [0.06214085086576566]</span>
+        <span class="c">#       [0.946417057338419]</span>
+        <span class="c">#       [0.9352235744480635]</span>
+        <span class="c">#       [0.05643177490633071]</span>
 </pre></div>
 </div>
-<p>Not bad!</p>
+<p>Not bad! Again you probably got something similar but not exactly the same.</p>
 <p>Neural Networks have a lot of applications. Once you have a model like <code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code> it&#8217;s just about feature selection and pre-processing now. In fact, with this architecture, you can start doing optical character recognition easily!</p>
 <ul class="simple">
 <li><em>&#8220;Good news! Your biscuits have arrived! They&#8217;ve been approved from the Wellington office.&#8221;</em></li>
@@ -220,7 +229,7 @@ output = XOR(False, False)              // output --&gt; False
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="neuralpy.html" class="btn btn-neutral" title="neuralpy"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="neuralpy.html" class="btn btn-neutral" title="neuralpy" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -232,10 +241,10 @@ output = XOR(False, False)              // output --&gt; False
         &copy; Copyright 2015, Jonathan N. Lee.
     </p>
   </div>
-
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
+
 </footer>
+
         </div>
       </div>
 
@@ -250,7 +259,7 @@ output = XOR(False, False)              // output --&gt; False
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.2.0',
+            VERSION:'1.2.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

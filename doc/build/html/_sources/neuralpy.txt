@@ -8,12 +8,8 @@
 |neuralpy|
 --------
 
-|neuralpy| is the original neural network package that features a simple yet powerful tool
-for creating neural network models while avoiding all math. All you have to do is focus on the data. Get started
-with simple examples and interface descriptions.
-
-.. note::
-    |neuralpy| has been succeeded by |neuralpy2| which has a similar interface but is much more extensible and modular.
+|neuralpy| provides an amazingly intuitive and powerful neural network model.
+To get started, take a look at some of the examples and explore the interface.
 
 .. toctree::
     :maxdepth: 2

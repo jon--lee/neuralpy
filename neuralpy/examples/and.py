@@ -1,4 +1,4 @@
-import neuralpy2
+import neuralpy
 
 training_set = [
     ([[1],[1]], [[1]]),
@@ -7,12 +7,12 @@ training_set = [
     ([[0],[0]], [[0]])
 ]
 
-# alternatively you could write training_set = neuralpy2.load_and()
+# alternatively you could write training_set = neuralpy.load_and()
 
-net = neuralpy2.Network([2, 3, 1])
+net = neuralpy.Network([2, 3, 1])
 
 for x, y in training_set:
-	neuralpy2.output(net.forward(x))
+	neuralpy.output(net.forward(x))
 
 
 epochs = 300
@@ -23,6 +23,6 @@ net.train(training_set[:], epochs, learning_rate, mini_batch_size=2, monitor=Tru
 print "\n"
 
 for x, y in training_set:
-	neuralpy2.output(net.forward(x))
+	neuralpy.output(net.forward(x))
 
 net.show_cost()

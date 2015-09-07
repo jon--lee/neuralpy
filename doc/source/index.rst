@@ -11,8 +11,8 @@ Welcome to neuralpy's documentation!
 This page desribes how to get set up with |neuralpy| and how to start using it.
 We always need help! Contribute on `Github <https://github.com/jon--lee/neuralpy.git>`_!
 
-|neuralpy2| is the most intuitive neural network model. |neuralpy2| has succeeded |neuralpy| as the standard for neural network models.
-Although |neuralpy| is still supported, we highly recommend you switch over to |neuralpy2|.
+|neuralpy| is a machine learning library specializing in neural networks. It's intuitive interface
+makes it easy for you to quickly start training data and testing models.
 
 The newest package features:
 
@@ -31,5 +31,4 @@ Table of Contents
     :maxdepth: 2
 
     installing
-    neuralpy2
     neuralpy

@@ -24,14 +24,14 @@ Create a neural network in your project by specifying the number of nodes in eac
 The network feeds input vectors as python lists forward and returns the output vector as a list::
 
 	x = [1, 1]
-	output = net.feedforward(x)
+	output = net.forward(x)
 	print output
         # ex: [0.11471727263613461]
 
 Train the neural network by first generating training data in the form of a list of tuples. Each tuple has two components and each component is a list representing the input and output respectively. This training set represents the simple OR function
 and it can be generated for you to save typing::
 
-	training_data = neuralpy2.load_or()
+	training_data = neuralpy.load_or()
         # [
         #   ([1, 1], [1]),
         #   ([1, 0], [1]),
@@ -49,7 +49,7 @@ Then run the *train* method with the parameters. We're telling the network to co
 
 Now feed forward the input from earlier and the output should be closer to 1.0, which is what we trained the network to do::
 
-	output = net.feedforward(x)
+	output = net.forward(x)
 	print output		# ex: [0.9542129706170075]
 
 There is more information about advanced options such as monitoring the cost in the official documentation.

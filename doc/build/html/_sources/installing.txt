@@ -30,7 +30,3 @@ Install with |pip|::
 
     $ pip install neuralpy
 
-or download the `compressed archive <https://pypi.python.org/pypi/neuralpy/>`_ from PyPI, expand it and |cd| into the directory that
-contains **setup.py** and execute (be sure to install |numpy| and |matplotlib| manually as well)::
-
-    $ python setup.py install
