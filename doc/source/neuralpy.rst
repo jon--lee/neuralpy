@@ -15,3 +15,4 @@ To get started, take a look at some of the examples and explore the interface.
     :maxdepth: 2
 
     gettingstarted
+    regression

@@ -5,7 +5,7 @@
 .. |1| replace:: :mod:`1`
 
 
-Getting Started (XOR example)
+Getting Started (XOR tutorial)
 ---------------
 Let's start off with a more detailed and involved example than the quick start guide found in the `README <https://github.com/jon--lee/neuralpy/blob/master/README.rst>`_.
 

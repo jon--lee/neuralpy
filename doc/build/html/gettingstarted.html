@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started (XOR example) &mdash; neuralpy 1.3.0 documentation</title>
+  <title>Getting Started (XOR tutorial) &mdash; neuralpy 1.3.0 documentation</title>
   
 
   
@@ -32,6 +32,7 @@
   
     <link rel="top" title="neuralpy 1.3.0 documentation" href="index.html"/>
         <link rel="up" title="neuralpy" href="neuralpy.html"/>
+        <link rel="next" title="Regression tutorial" href="regression.html"/>
         <link rel="prev" title="neuralpy" href="neuralpy.html"/> 
 
   
@@ -74,7 +75,12 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="neuralpy.html"><code class="docutils literal"><span class="pre">neuralpy</span></code></a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">Getting Started (XOR example)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Getting Started (XOR tutorial)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regression.html">Regression tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="regression.html#importing-the-tools">Importing the tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="regression.html#generating-and-normalizing-training-data">Generating and normalizing training data</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -103,7 +109,7 @@
       
           <li><a href="neuralpy.html"><code class="docutils literal"><span class="pre">neuralpy</span></code></a> &raquo;</li>
       
-    <li>Getting Started (XOR example)</li>
+    <li>Getting Started (XOR tutorial)</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -116,8 +122,8 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="getting-started-xor-example">
-<h1>Getting Started (XOR example)<a class="headerlink" href="#getting-started-xor-example" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="getting-started-xor-tutorial">
+<h1>Getting Started (XOR tutorial)<a class="headerlink" href="#getting-started-xor-tutorial" title="Permalink to this headline">¶</a></h1>
 <p>Let&#8217;s start off with a more detailed and involved example than the quick start guide found in the <a class="reference external" href="https://github.com/jon--lee/neuralpy/blob/master/README.rst">README</a>.</p>
 <p>The goal for this example is to create a neural network that will replicate the archetypal <a class="reference external" href="https://en.wikipedia.org/wiki/Exclusive_or">exclusive or</a>, XOR, function. This function is a &#8220;logical operation that outputs <code class="xref py py-mod docutils literal"><span class="pre">True</span></code> only when both inputs differ (one is true, and the other is false).&#8221; You&#8217;re probably familiar with this function from programming. Here&#8217;s some psuedo-code for what it should theoretically accomplish:</p>
 <div class="highlight-python"><div class="highlight"><pre>output = XOR(True, True)                // output --&gt; False
@@ -227,6 +233,8 @@ output = XOR(False, False)              // output --&gt; False
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="regression.html" class="btn btn-neutral float-right" title="Regression tutorial" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="neuralpy.html" class="btn btn-neutral" title="neuralpy" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

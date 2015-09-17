@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installing &mdash; neuralpy 1.3.0 documentation</title>
+  <title>Regression tutorial &mdash; neuralpy 1.3.0 documentation</title>
   
 
   
@@ -31,8 +31,8 @@
 
   
     <link rel="top" title="neuralpy 1.3.0 documentation" href="index.html"/>
-        <link rel="next" title="neuralpy" href="neuralpy.html"/>
-        <link rel="prev" title="Welcome to neuralpy’s documentation!" href="index.html"/> 
+        <link rel="up" title="neuralpy" href="neuralpy.html"/>
+        <link rel="prev" title="Getting Started (XOR tutorial)" href="gettingstarted.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -72,12 +72,12 @@
           
           
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Installing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neuralpy.html"><code class="docutils literal"><span class="pre">neuralpy</span></code></a><ul>
+<li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="neuralpy.html"><code class="docutils literal"><span class="pre">neuralpy</span></code></a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="gettingstarted.html">Getting Started (XOR tutorial)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="regression.html">Regression tutorial</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="regression.html#importing-the-tools">Importing the tools</a></li>
-<li class="toctree-l3"><a class="reference internal" href="regression.html#generating-and-normalizing-training-data">Generating and normalizing training data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Regression tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#importing-the-tools">Importing the tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generating-and-normalizing-training-data">Generating and normalizing training data</a></li>
 </ul>
 </li>
 </ul>
@@ -106,11 +106,13 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Installing</li>
+          <li><a href="neuralpy.html"><code class="docutils literal"><span class="pre">neuralpy</span></code></a> &raquo;</li>
+      
+    <li>Regression tutorial</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/installing.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/regression.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -119,22 +121,40 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="installing">
-<h1>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h1>
-<p>It&#8217;s recommended that you use <code class="xref py py-mod docutils literal"><span class="pre">pip</span></code> to install <code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code>. There are also alternative methods
-for doing so listed below.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>You&#8217;ll need <code class="xref py py-mod docutils literal"><span class="pre">numpy</span></code> and <code class="xref py py-mod docutils literal"><span class="pre">matplotlib</span></code> in order to run <code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code>. Those will be downloaded automatically
-if you install from <code class="xref py py-mod docutils literal"><span class="pre">pip</span></code>, which is why it&#8217;s recommended. At this time, it is a known issue that <code class="xref py py-mod docutils literal"><span class="pre">numpy</span></code> and <code class="xref py py-mod docutils literal"><span class="pre">matplotlib</span></code> do not automatically install
-as dependencies when using alternative methods of installation.</p>
-<p class="last">If you would like to use easy_install you&#8217;ll have to manually install <code class="xref py py-mod docutils literal"><span class="pre">numpy</span></code>. If you are downloading the compressed archive,
-you must install <code class="xref py py-mod docutils literal"><span class="pre">numpy</span></code> and <code class="xref py py-mod docutils literal"><span class="pre">matplotlib</span></code>
-manually.</p>
-</div>
-<p>Install with <code class="xref py py-mod docutils literal"><span class="pre">pip</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ pip install neuralpy
+  <div class="section" id="regression-tutorial">
+<h1>Regression tutorial<a class="headerlink" href="#regression-tutorial" title="Permalink to this headline">¶</a></h1>
+<p>Another simple application of <code class="xref py py-mod docutils literal"><span class="pre">neuralpy</span></code> is regression. The key characteristic of neural
+networks is that they are universal approximators.</p>
+<p>So let&#8217;s build a network that models
+a simple sin function, which takes one input and has one output:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sin</span><span class="p">(</span><span class="n">PI</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">1.0</span>
 </pre></div>
+</div>
+<p>In this tutorial we will:</p>
+<blockquote>
+<div><ul class="simple">
+<li>generate our own inputs and outputs</li>
+<li>normalize our training data</li>
+<li>create a layer with a linear activation function</li>
+<li>append that layer to our network</li>
+<li>monitor the loss minimization</li>
+<li>plot the final function</li>
+</ul>
+</div></blockquote>
+<div class="section" id="importing-the-tools">
+<h2>Importing the tools<a class="headerlink" href="#importing-the-tools" title="Permalink to this headline">¶</a></h2>
+<p>We&#8217;ll need neuralpy (obviously), matplotlib to plot things and numpy to generate our data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">neuralpy</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generating-and-normalizing-training-data">
+<h2>Generating and normalizing training data<a class="headerlink" href="#generating-and-normalizing-training-data" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -144,10 +164,8 @@ manually.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="neuralpy.html" class="btn btn-neutral float-right" title="neuralpy" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="index.html" class="btn btn-neutral" title="Welcome to neuralpy’s documentation!" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gettingstarted.html" class="btn btn-neutral" title="Getting Started (XOR tutorial)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
